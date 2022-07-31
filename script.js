@@ -8,7 +8,7 @@ class Book {
         this.title = title.value,
         this.author = author.value,
         this.pages = pages.value,
-        this.readStatus = readStatus.value
+        this.readStatus = readStatus.checked
     }
 }
 
@@ -19,6 +19,7 @@ function addBookToLibrary() {
 }
 
 function displayBooks() {
+    
     books = document.querySelectorAll('.bookEntry');
     if(books.length > 0) {
         books.forEach(book => {
@@ -28,8 +29,15 @@ function displayBooks() {
     
     for(let i=0; i<myLibrary.length; i++) {
         entry = document.createElement('div');
-        entry.innerText = myLibrary[i].title +' '+ myLibrary[i].author +' '+ myLibrary[i].pages +' '+ myLibrary[i].readStatus;
+        info = document.createElement('p');
+        bookStatus = document.createElement('button');
+        info.innerText = myLibrary[i].title +', by '+ myLibrary[i].author +', '+ myLibrary[i].pages;
+        bookStatus.innerText = 'status';
+        if(myLibrary[i].readStatus === true) bookStatus.classList.add('read');
+        else bookStatus.classList.add('notread');
         entry.classList.add('bookEntry');
+        entry.appendChild(info);
+        entry.appendChild(bookStatus);
         booklist.appendChild(entry);
     }
 }
@@ -44,10 +52,10 @@ const readStatus = document.getElementById('status');
 addBtn.addEventListener('click', () => {
     form.hidden = false;
 
-    addBook.addEventListener('click', () => {
-        addBookToLibrary();
-        form.hidden = true;
-    })
-
 })
 
+addBook.addEventListener('click', () => {
+    addBookToLibrary();
+    form.hidden = true;
+    form.reset();
+})

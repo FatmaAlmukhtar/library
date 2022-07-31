@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+form>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+form div:nth-child(4){
+    display: flex;
+    flex-direction: row;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.read {
+    background-color: green;
+    height: 20px;
+    width: 50px;
+}
+.notread {
+    background-color: red;
+    height: 20px;
+    width: 50px;
+}
+.bookEntry {
+    background-color: aquamarine;
+    border: solid 2px blue;
+    display: flex;
+    align-items: center;
+    width: 500px;
+    justify-content: space-between;
+}
