@@ -1,39 +1,86 @@
 body {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0;
+    text-align: center;
 }
 
+.header {
+    grid-column: 1/3;
+    background-color: brown;
+}
+.edit {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: blanchedalmond;
+    padding-top: 50px;
+}
 form>div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 15px;
+    margin-left: 60px;
 }
 form div:nth-child(4){
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
+.add {
+    width: 100px;
+    height: 30px;
 
-.list {
+}
+input {
+    width: 250px;
+    height: 20px;
+}
+.library {
+    width: 50vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    background-color: burlywood;
+    padding-top: 50px;
 }
+
 .read {
     background-color: green;
     height: 20px;
     width: 50px;
+    justify-self: end;
 }
 .notread {
     background-color: red;
     height: 20px;
     width: 50px;
+    justify-self: end;
 }
 .bookEntry {
-    background-color: aquamarine;
-    border: solid 2px blue;
-    display: flex;
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
     align-items: center;
-    width: 500px;
-    justify-content: space-between;
+    justify-items: center;
+}
+.even {
+    background-color: aquamarine;
+}
+.odd {
+    background-color: aqua;
+}
+.bookList {
+    box-shadow: 0 -5px 3px -3px rgb(0 0 0 / 0.2), 0 5px 3px -3px rgb(0 0 0 / 0.2);
+    overflow: auto;
+}
+.bookEntry > button {
+    width: 70px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
 }

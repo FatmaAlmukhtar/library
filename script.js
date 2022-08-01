@@ -1,5 +1,5 @@
 let myLibrary = [];
-const booklist = document.querySelector('.list');
+const booklist = document.querySelector('.bookList');
 
 window.addEventListener('load', displayBooks());
 
@@ -31,13 +31,28 @@ function displayBooks() {
         entry = document.createElement('div');
         info = document.createElement('p');
         bookStatus = document.createElement('button');
+        remove = document.createElement('button');
+
         info.innerText = myLibrary[i].title +', by '+ myLibrary[i].author +', '+ myLibrary[i].pages;
-        bookStatus.innerText = 'status';
-        if(myLibrary[i].readStatus === true) bookStatus.classList.add('read');
-        else bookStatus.classList.add('notread');
+        
+        remove.innerText = 'remove';
+        
+        if(myLibrary[i].readStatus === true) {
+            bookStatus.classList.add('read');
+            bookStatus.innerText = 'read';
+        }
+        else {
+            bookStatus.classList.add('notread');
+            bookStatus.innerText = 'not read';
+        }
+        
+        if(i%2 === 0) entry.classList.add('even');
+        else entry.classList.add('odd');
+
         entry.classList.add('bookEntry');
         entry.appendChild(info);
         entry.appendChild(bookStatus);
+        entry.appendChild(remove);
         booklist.appendChild(entry);
     }
 }
@@ -51,7 +66,6 @@ const readStatus = document.getElementById('status');
 
 addBtn.addEventListener('click', () => {
     form.hidden = false;
-
 })
 
 addBook.addEventListener('click', () => {
