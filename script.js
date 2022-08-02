@@ -28,16 +28,20 @@ function displayBooks() {
     }
     
     for(let i=0; i<myLibrary.length; i++) {
-        entry = document.createElement('div');
+        createBook(myLibrary[i], i);
+    }
+}
+function createBook(book, index) {
+    entry = document.createElement('div');
         info = document.createElement('p');
         bookStatus = document.createElement('button');
         remove = document.createElement('button');
 
-        info.innerText = myLibrary[i].title +', by '+ myLibrary[i].author +', '+ myLibrary[i].pages;
+        info.innerText = book.title +', by '+ book.author +', '+ book.pages;
         
         remove.innerText = 'remove';
         
-        if(myLibrary[i].readStatus === true) {
+        if(book.readStatus === true) {
             bookStatus.classList.add('read');
             bookStatus.innerText = 'read';
         }
@@ -46,7 +50,7 @@ function displayBooks() {
             bookStatus.innerText = 'not read';
         }
         
-        if(i%2 === 0) entry.classList.add('even');
+        if(index%2 === 0) entry.classList.add('even');
         else entry.classList.add('odd');
 
         entry.classList.add('bookEntry');
@@ -54,7 +58,16 @@ function displayBooks() {
         entry.appendChild(bookStatus);
         entry.appendChild(remove);
         booklist.appendChild(entry);
-    }
+
+        remove.addEventListener('click', () => {
+            myLibrary.splice(index, 1);
+            booklist.removeChild(entry);
+            displayBooks();
+        })
+        bookStatus.addEventListener('click', () => {
+            book.readStatus = !book.readStatus;
+            displayBooks();
+        })
 }
 const addBtn = document.querySelector('.add');
 const form = document.querySelector('form');
