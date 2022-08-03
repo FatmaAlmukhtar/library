@@ -63,12 +63,29 @@ function createBook(book, index) {
             myLibrary.splice(index, 1);
             booklist.removeChild(entry);
             displayBooks();
+            saveBooks();
         })
         bookStatus.addEventListener('click', () => {
             book.readStatus = !book.readStatus;
             displayBooks();
         })
+        saveBooks();
 }
+
+function saveBooks() {
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+function loadBooks() {
+    if (!localStorage.myLibrary) displayBooks();
+    else {
+        temp = localStorage.getItem('myLibrary');
+        temp = JSON.parse(temp);
+        myLibrary =temp;
+        displayBooks();
+    }
+}
+
+loadBooks();
 const addBtn = document.querySelector('.add');
 const form = document.querySelector('form');
 const addBook = document.querySelector('.add.book');
