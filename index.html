@@ -10,22 +10,24 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <nav class="header">
-        <div>Digital Library</div>
-    </nav>
     
-    <div class="edit">
+    <div class="library">
+        <h3>Digital Library</h3>
         <button class="add">New Book</button>
+        <div class="bookList"></div>
+    </div>
 
-        <form action="" hidden>
+    <div class="edit" hidden>
+        <form action="">
+            <button type="button" class="delete">x</button>
             <div>
                 <label for="title">Title</label>
-                <input type="text" id="title" placeholder="book title">
+                <input type="text" id="title" placeholder="book title" required>
             </div>
             
             <div>
                 <label for="author">Author</label>
-                <input type="text" id="author" placeholder="book author">
+                <input type="text" id="author" placeholder="book author" required>
             </div>
     
             <div>
@@ -41,10 +43,6 @@
             <button type="button" class="add book">ADD</button>
         </form>
     </div>
-
-    <div class="library">
-        <h3>My Book List</h3>
-        <div class="bookList"></div>
-    </div>
+    
 </body>
 </html>

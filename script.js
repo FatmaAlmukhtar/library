@@ -33,11 +33,15 @@ function displayBooks() {
 }
 function createBook(book, index) {
     entry = document.createElement('div');
-        info = document.createElement('p');
+        titleInfo = document.createElement('p');
+        authorInfo = document.createElement('p');
+        pagesInfo = document.createElement('p');
         bookStatus = document.createElement('button');
         remove = document.createElement('button');
 
-        info.innerText = book.title +', by '+ book.author +', '+ book.pages;
+        titleInfo.innerText = book.title;
+        authorInfo.innerText =  'by '+ book.author;
+        pagesInfo.innerText =  book.pages;
         
         remove.innerText = 'remove';
         
@@ -54,7 +58,9 @@ function createBook(book, index) {
         else entry.classList.add('odd');
 
         entry.classList.add('bookEntry');
-        entry.appendChild(info);
+        entry.appendChild(titleInfo);
+        entry.appendChild(authorInfo);
+        entry.appendChild(pagesInfo);
         entry.appendChild(bookStatus);
         entry.appendChild(remove);
         booklist.appendChild(entry);
@@ -87,19 +93,26 @@ function loadBooks() {
 
 loadBooks();
 const addBtn = document.querySelector('.add');
+const formBlock = document.querySelector('.edit');
 const form = document.querySelector('form');
 const addBook = document.querySelector('.add.book');
+const del = document.querySelector('.delete');
 const title = document.getElementById('title');
 const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 const readStatus = document.getElementById('status');
 
 addBtn.addEventListener('click', () => {
-    form.hidden = false;
+    formBlock.hidden = false;
 })
 
 addBook.addEventListener('click', () => {
     addBookToLibrary();
-    form.hidden = true;
+    formBlock.hidden = true;
     form.reset();
+})
+del.addEventListener('click', () => {
+    form.reset();
+    formBlock.hidden = true;
+    
 })
