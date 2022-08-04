@@ -1,3 +1,21 @@
+:root {
+    /* COLOR VARIABLES */
+    --primary-color: #88d9e6;
+    --secondary-color: #c5fffd;
+    --background-color: #fafdf6;
+    --heading-text-color: rgb(82, 82, 82);
+    --main-text-color: rgb(111, 111, 111);
+    --read-book-color: rgb(107, 217, 107);
+    --unread-book-color: rgb(255, 122, 122);
+
+    /* FONT SIZE VARIABLES */
+    --font-size-xs: 12px;
+    --font-size-s: 16px;
+    --font-size-m: 18px;
+    --font-size-l: 20px;
+    --font-size-xl: 24px;
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -6,22 +24,44 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+/* HEADER ELEMENTS STYLES */
 .header {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
-    background-color: #88d9e6;
-    color: rgb(82, 82, 82);
-    font-size: 24px;
+    background-color: var(--primary-color);
+    color: var(--heading-text-color);
+    font-size: var(--font-size-xl);
 }
 h2 {
     margin: 15px 0;
 }
 span {
-    font-size: 20px;
-    
+    font-size: var(--font-size-l);
 }
+.rules {
+    cursor: pointer;
+}
+.rules .info {
+    visibility: hidden;
+    background-color: var(--main-text-color);
+    color: var(--secondary-color);
+    font-style: italic;
+    max-width: 260px;
+    font-size: var(--font-size-s);
+    position: absolute;
+    right: 10%;
+    top: 0;
+    border-radius: 5px;
+    padding: 20px;
+}
+.rules:hover .info {
+    visibility: visible;
+}
+
+/* FORM SECTION STYLES */
 .edit {
     left: 0;
     top: 0;
@@ -34,17 +74,36 @@ span {
 form {
     margin: 20% auto;
     width: 350px;
-    background-color: #88d9e6;
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
     padding: 20px 0;
-    height: 350px;
+    height: 365px;
     justify-content: space-evenly;
-    font-size: 18px;
-    color: rgb(82, 82, 82);
+    font-size: var(--font-size-m);
+    color: var(--heading-text-color);
     font-weight: 400;
+}
+form div:first-child {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 5px;
+}
+legend {
+    margin-bottom: 10px;
+    font-size: var(--font-size-l);
+}
+.cancel {
+    border: none;
+    background-color: transparent;
+    align-self: flex-end;
+    margin: -15px 10px 32px 0;
+    padding: 0;
 }
 form>div {
     display: flex;
@@ -58,13 +117,20 @@ form div:nth-child(5){
     align-items: center;
     gap: 40px;
 }
+input {
+    width: 250px;
+    height: 20px;
+}
+input::placeholder {
+    font-style: italic;
+}
 #status {
     width: 20px;
 }
 .add {
     width: 120px;
     height: 30px;
-    background-color: #fafdf6;
+    background-color: var(--background-color);
     border: none;
     border-radius: 15px;
     display: flex;
@@ -72,50 +138,28 @@ form div:nth-child(5){
     align-items: center;
     gap: 10px;
     font-weight: 600;
-    color: rgb(82, 82, 82);
+    color: var(--heading-text-color);
 }
 .add:hover {
     opacity: 0.9;
 }
-.delete {
-    border: none;
-    background-color: #fafdf6;
-    border-radius: 50%;
-    align-self: flex-end;
-    margin: -15px 15px 10px 0;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    padding: 0;
-}
-input {
-    width: 250px;
-    height: 20px;
-}
+
+/* LIBRARY SECTION STYLES */
 .library {
     display: flex;
     flex-direction: column;
-    background: #fafdf6;
+    background: var(--background-color);
     align-items: center;
     flex: 1;
     overflow: auto;
     justify-content: space-between;
     gap: 40px;
 }
-
-.read {
-    background-color: rgb(107, 217, 107);
-}
-.notread {
-    background-color: rgb(255, 122, 122);
-    
-}
-.buttons > button:hover{
-    opacity: 0.9;
-}
-button {
-    cursor: pointer;
-    color: rgb(82, 82, 82);
+.bookList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
 }
 .bookEntry {
     display: flex;
@@ -125,27 +169,28 @@ button {
     width: 200px;
     height: 200px;
     border-radius: 20px;
-    border: 5px solid #88d9e6;
-    /*box-shadow: 0 -5px 3px -3px rgb(0 0 0 / 0.2), 0 5px 3px -3px rgb(0 0 0 / 0.2);*/
-    background: #c5fffd;
+    border: 5px solid var(--primary-color);
+    background: var(--secondary-color);
     padding: 10px;
-    color: rgb(111, 111, 111);
+    color: var(--main-text-color);
     box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.6);
     -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.6);
 }
-
-.bookList {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 40px;
+.bookEntry p:first-child {
+    font-size: var(--font-size-m);
+    font-weight: bold;
+}
+.bookEntry > p {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-size: var(--font-size-m);
 }
 .buttons {
     align-self: center;
     margin-bottom: 10px;
 }
 .buttons :last-child {
-    background-color: #fafdf6;
+    background-color: var(--background-color);
 }
 .buttons > button {
     border: none;
@@ -154,21 +199,21 @@ button {
     height: 30px;
     margin-right: 10px;
     margin-left: 10px;
-    
 }
-.bookEntry p:first-child {
-    font-size: 18px;
-    font-weight: bold;
+.buttons > button:hover{
+    opacity: 0.9;
+}
+.read {
+    background-color: var(--read-book-color);
+}
+.notread {
+    background-color: var(--unread-book-color);
 }
 
-.bookEntry > p {
-    margin-bottom: 5px;
-    margin-top: 10px;
-    font-size: 18px;
-}
+/* FOOTER SECTION STYLES */
 footer {
     color: black;
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     display: flex;
     align-items: center;
     margin-top: 10px;
@@ -179,23 +224,9 @@ img {
     margin-left: 5px;
     margin-top: 5px;
 }
-.rules {
+
+/* BUTTON ELEMENTS GENERAL STYLE */
+button {
     cursor: pointer;
-}
-.rules .info {
-    visibility: hidden;
-    background-color: rgb(111, 111, 111);
-    color: #c5fffd;
-    font-style: italic;
-    max-width: 260px;
-    font-size: 16px;
-    position: absolute;
-    right: 10%;
-    top: 0;
-    border-radius: 5px;
-    padding: 20px;
-}
-.rules:hover .info {
-    visibility: visible;
-    
+    color: var(--heading-text-color);
 }
