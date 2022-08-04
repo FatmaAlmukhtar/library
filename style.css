@@ -3,7 +3,8 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    
+    display: flex;
+    flex-direction: column;
 }
 .header {
     display: flex;
@@ -11,7 +12,6 @@ body {
     align-items: center;
     padding: 20px 0;
     background-color: #88d9e6;
-    box-shadow: 0 8px 8px -4px lightblue;
     color: rgb(82, 82, 82);
     font-size: 24px;
 }
@@ -29,7 +29,7 @@ span {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
 }
 form {
     margin: 20% auto;
@@ -40,7 +40,7 @@ form {
     align-items: center;
     border-radius: 10px;
     padding: 20px 0;
-    height: 320px;
+    height: 350px;
     justify-content: space-evenly;
     font-size: 18px;
     color: rgb(82, 82, 82);
@@ -93,11 +93,14 @@ input {
     height: 20px;
 }
 .library {
-    
     display: flex;
     flex-direction: column;
     background: #fafdf6;
     align-items: center;
+    flex: 1;
+    overflow: auto;
+    justify-content: space-between;
+    gap: 40px;
 }
 
 .read {
@@ -127,6 +130,8 @@ button {
     background: #c5fffd;
     padding: 10px;
     color: rgb(111, 111, 111);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.6);
 }
 
 .bookList {
@@ -162,16 +167,35 @@ button {
     font-size: 18px;
 }
 footer {
-    position: absolute;
-    bottom: 0;
     color: black;
     font-size: 12px;
     display: flex;
     align-items: center;
+    margin-top: 10px;
 }
 img {
     height: 18px;
     width: 18px;
     margin-left: 5px;
     margin-top: 5px;
+}
+.rules {
+    cursor: pointer;
+}
+.rules .info {
+    visibility: hidden;
+    background-color: rgb(111, 111, 111);
+    color: #c5fffd;
+    font-style: italic;
+    max-width: 260px;
+    font-size: 16px;
+    position: absolute;
+    right: 10%;
+    top: 0;
+    border-radius: 5px;
+    padding: 20px;
+}
+.rules:hover .info {
+    visibility: visible;
+    
 }
