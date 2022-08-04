@@ -33,15 +33,17 @@ function displayBooks() {
 }
 function createBook(book, index) {
     entry = document.createElement('div');
+    infoDiv = document.createElement('div');
         titleInfo = document.createElement('p');
         authorInfo = document.createElement('p');
         pagesInfo = document.createElement('p');
+        editBook = document.createElement('div');
         bookStatus = document.createElement('button');
         remove = document.createElement('button');
 
         titleInfo.innerText = book.title;
-        authorInfo.innerText =  'by '+ book.author;
-        pagesInfo.innerText =  book.pages;
+        authorInfo.innerText =  'By: '+ book.author;
+        pagesInfo.innerText =  'Number of pages: ' + book.pages;
         
         remove.innerText = 'remove';
         
@@ -53,16 +55,17 @@ function createBook(book, index) {
             bookStatus.classList.add('notread');
             bookStatus.innerText = 'not read';
         }
-        
-        if(index%2 === 0) entry.classList.add('even');
-        else entry.classList.add('odd');
 
         entry.classList.add('bookEntry');
-        entry.appendChild(titleInfo);
-        entry.appendChild(authorInfo);
-        entry.appendChild(pagesInfo);
-        entry.appendChild(bookStatus);
-        entry.appendChild(remove);
+        infoDiv.appendChild(titleInfo);
+        infoDiv.appendChild(authorInfo);
+        infoDiv.appendChild(pagesInfo);
+        entry.appendChild(infoDiv);
+        editBook.classList.add('buttons');
+        editBook.appendChild(bookStatus);
+        editBook.appendChild(remove);
+        
+        entry.appendChild(editBook);
         booklist.appendChild(entry);
 
         remove.addEventListener('click', () => {
@@ -105,11 +108,20 @@ const readStatus = document.getElementById('status');
 addBtn.addEventListener('click', () => {
     formBlock.hidden = false;
 })
-
+/*
+form.onsubmit = function() {
+    if (title.value && author.value) {
+        addBookToLibrary();
+        formBlock.hidden = true;
+        form.reset();
+    }
+}*/
 addBook.addEventListener('click', () => {
-    addBookToLibrary();
-    formBlock.hidden = true;
-    form.reset();
+    if (title.value && author.value && pages.value) {
+        addBookToLibrary();
+        formBlock.hidden = true;
+        form.reset();
+    }
 })
 del.addEventListener('click', () => {
     form.reset();

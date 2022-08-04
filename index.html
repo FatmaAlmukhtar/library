@@ -10,10 +10,13 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <div class="header">
+        <h2>Digital Library</h2>
+        <button class="add"><span>+</span> New Book</button>
+    </div>
+
     <div class="library">
-        <h3>Digital Library</h3>
-        <button class="add">New Book</button>
+        
         <div class="bookList"></div>
     </div>
 
@@ -32,15 +35,15 @@
     
             <div>
                 <label for="pages">Number of pages</label>
-                <input type="number" id="pages" placeholder="# of pages">
+                <input type="number" id="pages" placeholder="# of pages" required>
             </div>
     
             <div>
-                <label for="status">Read Status</label>
+                <label for="status">Did you read this book?</label>
                 <input type="checkbox" id="status">
             </div>
     
-            <button type="button" class="add book">ADD</button>
+            <input type="submit" class="add book" value="Add Book">
         </form>
     </div>
     
